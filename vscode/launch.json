@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/a.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "miDebuggerPath": "/usr/bin/gdb",
+            "MIMode": "gdb",
+            "preLaunchTask": "build", 
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+        },
+        {
+            "name": "Debug SDL App",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/app",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "environment": [{"name": "DISPLAY", "value": "192.168.43.237:0"}],
+            "preLaunchTask": "Build CMake Project",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+
+    ]
+}

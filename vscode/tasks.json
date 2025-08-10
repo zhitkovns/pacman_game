@@ -1,0 +1,57 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${workspaceFolder}/main.cpp", // Укажите здесь путь к вашему исходному файлу
+                "-o",
+                "${workspaceFolder}/a.out" // Имя выходного файла
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Скомпилировать C++ программу"
+        },
+        {
+            "label": "Build CMake Project",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build",  // Путь к каталогу сборки
+                "--config",
+                "Debug"  // Или "Release", в зависимости от ваших нужд
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Сборка CMake проекта внутри Dev контейнера."
+        },
+        {
+            "label": "Configure CMake",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S",
+                "${workspaceFolder}",  // Путь к корневой директории проекта
+                "-B",
+                "${workspaceFolder}/build",  // Путь к каталогу сборки
+                "-DCMAKE_BUILD_TYPE=Debug"  // Или "Release"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Конфигурация CMake проекта внутри Dev контейнера."
+        }
+    ]
+}
